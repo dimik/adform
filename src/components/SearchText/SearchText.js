@@ -1,11 +1,11 @@
 import React from 'react';
-import { fade, withStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import { connect } from 'react-redux';
 import { setSearchText } from 'actions/search';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -43,18 +43,11 @@ const styles = theme => ({
       },
     },
   },
-});
+}));
 
-export default withStyles(styles)(connect(
-  ({ search }) => ({
-    searchText: search.text,
-  }),
-  dispatch => ({
-    handleSearchChange: e => {
-      dispatch(setSearchText(e.target.value));
-    },
-  })
-)(({ classes, searchText, handleSearchChange }) => {
+export function SearchText({ searchText, handleSearchChange }) {
+  const classes = useStyles();
+
   return (
     <div className={classes.root}>
       <div className={classes.searchIcon}>
@@ -72,4 +65,15 @@ export default withStyles(styles)(connect(
       />
     </div>
   );
-}));
+};
+
+export default connect(
+  ({ search }) => ({
+    searchText: search.text,
+  }),
+  dispatch => ({
+    handleSearchChange: e => {
+      dispatch(setSearchText(e.target.value));
+    },
+  })
+)(SearchText);

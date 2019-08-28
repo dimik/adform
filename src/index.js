@@ -6,21 +6,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import App from 'components/App';
 import Campaigns from 'components/Campaigns'
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger';
-import reducers from 'reducers';
+import store from 'store';
 import { addCampaigns, populateCampaigns } from 'actions/campaigns';
 
 import * as serviceWorker from './serviceWorker';
-
-const store = createStore(
-  reducers,
-  applyMiddleware(
-    thunkMiddleware,
-    createLogger()
-  )
-);
 
 // CamelCase or camelCase ???
 window.AddCampaigns = window.addCampaigns = function (campaigns) {
