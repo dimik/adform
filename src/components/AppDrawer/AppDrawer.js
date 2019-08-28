@@ -36,39 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default connect(
-  ({ navigation, search }) => ({
-    drawer: navigation.drawer,
-    searchFilters: search.filters,
-    startDate: search.filters.find(filter => filter.name === 'startDate'),
-    endDate: search.filters.find(filter => filter.name === 'endDate'),
-  }),
-  dispatch => ({
-    handleDrawerClose: () => {
-      dispatch(closeDrawer());
-    },
-    handleStartDateChange: date => {
-      dispatch(setFilter({
-        active: true,
-        name: 'startDate',
-        type: 'campaigns',
-        value: date.toISOString(),
-        query: { startDate: date.toISOString() },
-        label: `Active since ${datesUtil.formatDateLocalized(date)}`,
-      }));
-    },
-    handleEndDateChange: date => {
-      dispatch(setFilter({
-        active: true,
-        name: 'endDate',
-        type: 'campaigns',
-        value: date.toISOString(),
-        query: { endDate: date.toISOString() },
-        label: `Active until ${datesUtil.formatDateLocalized(date)}`,
-      }));
-    },
-  })
-)(({ drawer, handleDrawerClose, handleStartDateChange, handleEndDateChange, startDate, endDate }) => {
+export function AppDrawer({ drawer, handleDrawerClose, handleStartDateChange, handleEndDateChange, startDate, endDate }) {
   const classes = useStyles({ drawerWidth: drawer.width });
 
   return (
@@ -122,4 +90,38 @@ export default connect(
       </div>
     </Drawer>
   );
-});
+};
+
+export default connect(
+  ({ navigation, search }) => ({
+    drawer: navigation.drawer,
+    searchFilters: search.filters,
+    startDate: search.filters.find(filter => filter.name === 'startDate'),
+    endDate: search.filters.find(filter => filter.name === 'endDate'),
+  }),
+  dispatch => ({
+    handleDrawerClose: () => {
+      dispatch(closeDrawer());
+    },
+    handleStartDateChange: date => {
+      dispatch(setFilter({
+        active: true,
+        name: 'startDate',
+        type: 'campaigns',
+        value: date.toISOString(),
+        query: { startDate: date.toISOString() },
+        label: `Active since ${datesUtil.formatDateLocalized(date)}`,
+      }));
+    },
+    handleEndDateChange: date => {
+      dispatch(setFilter({
+        active: true,
+        name: 'endDate',
+        type: 'campaigns',
+        value: date.toISOString(),
+        query: { endDate: date.toISOString() },
+        label: `Active until ${datesUtil.formatDateLocalized(date)}`,
+      }));
+    },
+  })
+)(AppDrawer);

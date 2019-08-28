@@ -1,1 +1,1 @@
-export { default } from './ModalPreloader';
+export { default, ModalPreloader } from './ModalPreloader';

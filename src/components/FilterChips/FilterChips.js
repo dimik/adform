@@ -19,17 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default connect(
-  ({ search }) => ({ search }),
-  dispatch => ({
-    handleRemoveFilter: name => {
-      dispatch(removeFilter(name));
-    },
-    handleToggleFilter: name => {
-      dispatch(toggleFilter(name));
-    },
-  })
-)(({ search, handleRemoveFilter, handleToggleFilter }) => {
+export function FilterChips({ search, handleRemoveFilter, handleToggleFilter }) {
   const classes = useStyles();
 
   return (
@@ -50,4 +40,16 @@ export default connect(
       ))}
     </div>
   );
-});
+};
+
+export default connect(
+  ({ search }) => ({ search }),
+  dispatch => ({
+    handleRemoveFilter: name => {
+      dispatch(removeFilter(name));
+    },
+    handleToggleFilter: name => {
+      dispatch(toggleFilter(name));
+    },
+  })
+)(FilterChips);

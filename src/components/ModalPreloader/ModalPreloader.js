@@ -6,11 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { connect } from 'react-redux';
 
-export default connect(
-  ({ storage }) => ({
-    isPopulating: storage.isPopulating,
-  })
-)(({ isPopulating }) => {
+export function ModalPreloader({ isPopulating }) {
   return (
     <Dialog
       open={isPopulating}
@@ -27,4 +23,10 @@ export default connect(
       </DialogContent>
     </Dialog>
   );
-});
+};
+
+export default connect(
+  ({ storage }) => ({
+    isPopulating: storage.isPopulating,
+  })
+)(ModalPreloader);

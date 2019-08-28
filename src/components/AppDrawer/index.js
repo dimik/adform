@@ -1,1 +1,1 @@
-export { default } from './AppDrawer';
+export { default, AppDrawer } from './AppDrawer';

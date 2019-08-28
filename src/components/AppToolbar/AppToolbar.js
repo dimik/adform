@@ -32,13 +32,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default connect(
-  ({ navigation, search }) => ({
-    drawer: navigation.drawer,
-    toolbar: navigation.toolbar,
-    search,
-  })
-)(({ drawer, toolbar, search }) => {
+export function AppToolbar({ drawer, toolbar, search }) {
   const classes = useStyles({ drawerWidth: drawer.width });
 
   return (
@@ -59,4 +53,12 @@ export default connect(
       )}
     </AppBar>
   );
-});
+};
+
+export default connect(
+  ({ navigation, search }) => ({
+    drawer: navigation.drawer,
+    toolbar: navigation.toolbar,
+    search,
+  })
+)(AppToolbar);

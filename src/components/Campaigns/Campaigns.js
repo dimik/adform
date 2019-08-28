@@ -42,14 +42,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default connect(
-  ({ campaigns, search }) => ({
-    campaigns,
-    searchText: search.text,
-    searchFilters: search.filters,
-  }),
-  { searchCampaigns },
-)(({ campaigns, searchText, searchFilters, searchCampaigns }) => {
+export function Campaigns({ campaigns, searchText, searchFilters, searchCampaigns }) {
   const classes = useStyles();
   const [query, setQuery] = useState(campaigns.query);
 
@@ -125,4 +118,13 @@ export default connect(
       </Paper>
     </div>
   );
-});
+};
+
+export default connect(
+  ({ campaigns, search }) => ({
+    campaigns,
+    searchText: search.text,
+    searchFilters: search.filters,
+  }),
+  { searchCampaigns },
+)(Campaigns);

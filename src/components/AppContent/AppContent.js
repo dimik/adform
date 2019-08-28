@@ -28,12 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default connect(
-  ({ navigation }) => ({
-    drawerOpen: navigation.drawer.open,
-    drawerWidth: navigation.drawer.width,
-  })
-)(({ children, drawerOpen, drawerWidth }) => {
+export function AppContent({ children, drawerOpen, drawerWidth }) {
   const classes = useStyles({ drawerWidth });
 
   return (
@@ -46,4 +41,11 @@ export default connect(
       {children}
     </main>
   );
-});
+};
+
+export default connect(
+  ({ navigation }) => ({
+    drawerOpen: navigation.drawer.open,
+    drawerWidth: navigation.drawer.width,
+  })
+)(AppContent);
