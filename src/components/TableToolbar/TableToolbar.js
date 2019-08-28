@@ -31,17 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default connect(
-  null,
-  dispatch => ({
-    handleDrawerToggle: () => {
-      dispatch(toggleDrawer());
-    },
-    removeAllFilters: () => {
-      dispatch(removeAllFilters());
-    },
-  })
-)(({ handleDrawerToggle, removeAllFilters }) => {
+export function TableToolbar({ handleDrawerToggle, removeAllFilters }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -102,4 +92,16 @@ export default connect(
       </div>
     </Toolbar>
   );
-});
+};
+
+export default connect(
+  null,
+  dispatch => ({
+    handleDrawerToggle: () => {
+      dispatch(toggleDrawer());
+    },
+    removeAllFilters: () => {
+      dispatch(removeAllFilters());
+    },
+  })
+)(TableToolbar);
