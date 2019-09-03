@@ -1,18 +1,20 @@
+import ActionTypes from 'constants/ActionTypes';
+
 export function openDrawer() {
-  return { type: 'OPEN_DRAWER' };
+  return { type: ActionTypes.OPEN_DRAWER };
 }
 
 export function closeDrawer() {
-  return { type: 'CLOSE_DRAWER' };
+  return { type: ActionTypes.CLOSE_DRAWER };
 }
 
 export function toggleDrawer() {
-  return { type: 'TOGGLE_DRAWER' };
+  return { type: ActionTypes.TOGGLE_DRAWER };
 }
 
 export function setToolbarTitle(title = '') {
   return {
-    type: 'SET_TOOLBAR_TITLE',
+    type: ActionTypes.SET_TOOLBAR_TITLE,
     title,
   }
 }

@@ -1,30 +1,31 @@
 import api from 'api';
+import ActionTypes from 'constants/ActionTypes';
 import validator from 'util/validator';
 import datesUtil from 'util/dates';
 import stubUtil from 'util/stub';
 
 function requestPopulateCampaigns() {
   return {
-    type: 'POPULATE_CAMPAIGNS_REQUEST',
+    type: ActionTypes.POPULATE_CAMPAIGNS_REQUEST,
   };
 }
 
 function receivePopulateCampaigns() {
   return {
-    type: 'POPULATE_CAMPAIGNS_SUCCESS',
+    type: ActionTypes.POPULATE_CAMPAIGNS_SUCCESS,
   };
 }
 
 function requestCampaignsSearch(query) {
   return {
-    type: 'SEARCH_CAMPAIGNS_REQUEST',
+    type: ActionTypes.SEARCH_CAMPAIGNS_REQUEST,
     query,
   };
 }
 
 function receiveCampaignsSearch(data) {
   return {
-    type: 'SEARCH_CAMPAIGNS_SUCCESS',
+    type: ActionTypes.SEARCH_CAMPAIGNS_SUCCESS,
     data,
     receivedAt: Date.now(),
   };

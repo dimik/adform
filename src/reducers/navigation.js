@@ -1,3 +1,5 @@
+import ActionTypes from 'constants/ActionTypes';
+
 const initialState = {
   drawer: { open: false, width: 240 },
   toolbar: { title: 'Campaigns' },
@@ -5,22 +7,22 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case 'OPEN_DRAWER':
+    case ActionTypes.OPEN_DRAWER:
       return {
         ...state,
         drawer: { ...state.drawer, open: true },
       };
-    case 'CLOSE_DRAWER':
+    case ActionTypes.CLOSE_DRAWER:
       return {
         ...state,
         drawer: { ...state.drawer, open: false },
       };
-    case 'TOGGLE_DRAWER':
+    case ActionTypes.TOGGLE_DRAWER:
       return {
         ...state,
         drawer: { ...state.drawer, open: !state.drawer.open },
       };
-    case 'SET_TOOLBAR_TITLE':
+    case ActionTypes.SET_TOOLBAR_TITLE:
       return {
         ...state,
         toolbar: { ...state.toolbar, title: action.title },

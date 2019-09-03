@@ -1,33 +1,35 @@
+import ActionTypes from 'constants/ActionTypes';
+
 export function setFilter(filter) {
   return {
-    type: 'SET_SEARCH_FILTER',
+    type: ActionTypes.SET_SEARCH_FILTER,
     filter,
   }
 }
 
 export function removeFilter(name) {
   return {
-    type: 'REMOVE_SEARCH_FILTER',
+    type: ActionTypes.REMOVE_SEARCH_FILTER,
     name,
   }
 }
 
 export function removeAllFilters() {
   return {
-    type: 'REMOVE_ALL_SEARCH_FILTERS',
+    type: ActionTypes.REMOVE_ALL_SEARCH_FILTERS,
   }
 }
 
 export function toggleFilter(name) {
   return {
-    type: 'TOGGLE_SEARCH_FILTER',
+    type: ActionTypes.TOGGLE_SEARCH_FILTER,
     name,
   }
 }
 
 export function setSearchText(text = '') {
   return {
-    type: 'SET_SEARCH_TEXT',
+    type: ActionTypes.SET_SEARCH_TEXT,
     text,
   }
 }

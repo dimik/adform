@@ -1,3 +1,5 @@
+import ActionTypes from 'constants/ActionTypes';
+
 const { localStorage: storage } = window;
 const initialState = {
   isLoading: false,
@@ -9,25 +11,25 @@ const initialState = {
 
 export default function campaigns(state = initialState, action) {
   switch (action.type) {
-    case 'SEARCH_CAMPAIGNS_REQUEST':
+    case ActionTypes.SEARCH_CAMPAIGNS_REQUEST:
       return {
         ...state,
         query: action.query,
         isLoading: true,
       };
-    case 'SEARCH_CAMPAIGNS_SUCCESS':
+    case ActionTypes.SEARCH_CAMPAIGNS_SUCCESS:
       return {
         ...state,
         ...action.data,
         isLoading: false,
         lastUpdated: action.receivedAt,
       };
-    case 'POPULATE_CAMPAIGNS_REQUEST':
+    case ActionTypes.POPULATE_CAMPAIGNS_REQUEST:
       return {
         ...state,
         isPopulating: true,
       };
-    case 'POPULATE_CAMPAIGNS_SUCCESS':
+    case ActionTypes.POPULATE_CAMPAIGNS_SUCCESS:
       storage.setItem('campaigns.populated', '1');
       return {
         ...state,

@@ -1,2 +1,4 @@
+import ActionTypes from 'constants/ActionTypes';
+
 export const toggleDrawer = jest.fn()
-  .mockImplementation(() => ({ type: 'TOGGLE_DRAWER' }));
+  .mockImplementation(() => ({ type: ActionTypes.TOGGLE_DRAWER }));
